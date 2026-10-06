@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Closof Dev — Fullstack &amp; Software Developer</title>
+<meta name="description" content="Portofolio simple, modern & smooth — Closof Dev, Fullstack &amp; Software Developer." />
+<link rel="icon" type="image/png" href="./closof-logo.png" />
+<link rel="apple-touch-icon" href="./closof-logo.png" />
+
+<!-- Open Graph / WhatsApp / Facebook / LinkedIn -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://closof.site" />
+<meta property="og:title" content="Closof Dev — Fullstack &amp; Software Developer" />
+<meta property="og:description" content="Portofolio simple, modern & smooth — Closof Dev, Fullstack &amp; Software Developer." />
+<meta property="og:image" content="./media/porto-closof-v1/beranda.png" />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Closof Dev — Fullstack &amp; Software Developer" />
+<meta name="twitter:description" content="Portofolio simple, modern & smooth — Closof Dev, Fullstack &amp; Software Developer." />
+<meta name="twitter:image" content="./media/porto-closof-v1/beranda.png" />
+<meta name="theme-color" content="#FBFBFA" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Ubuntu', 'Arial', 'system-ui', 'sans-serif'],
+        serif: ['Ubuntu', 'Arial', 'sans-serif'],
+        mono: ['"Ubuntu Mono"', 'monospace'],
+      },
+      colors: {
+        bone: '#FBFBFA',
+        ink: '#111111',
+        muted: '#787774',
+        line: '#EAEAEA',
+      },
+    }
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400;1,500&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=29" />
+</head>
+<body class="bg-bone text-ink font-sans antialiased overflow-x-hidden">
+
+<!-- Grain -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- NAV : Fluid Island -->
+<header id="siteHeader" class="fixed top-0 left-0 right-0 z-[80] flex justify-center px-4 pt-5">
+  <nav id="islandNav" class="flex items-center gap-1 bg-white/80 backdrop-blur-2xl border border-black/[0.06] rounded-full pl-3.5 pr-2 py-2 shadow-[0_8px_40px_rgba(0,0,0,0.06)]">
+    <a href="#beranda" class="mr-2 sm:mr-4 flex items-center gap-2 shrink-0">
+      <img src="./closof-logo.png" alt="Closof Logo" class="w-8 h-8 rounded-full object-cover shrink-0" />
+      <span class="hidden sm:inline-flex items-center gap-1.5 font-semibold tracking-tight text-[15px]">
+        <span>Closof Developer</span>
+        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" aria-label="Verified" title="Verified">
+          <path d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81c-.67-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.33 2.19c-1.4-.46-2.91-.2-3.92.81s-1.26 2.52-.8 3.91c-1.31.67-2.2 1.91-2.2 3.34s.89 2.67 2.2 3.34c-.46 1.4-.2 2.91.8 3.91s2.52 1.26 3.91.81c.67 1.31 1.93 2.19 3.34 2.19s2.67-.88 3.34-2.19c1.39.45 2.9.2 3.91-.81s1.27-2.51.81-3.91c1.31-.67 2.19-1.91 2.19-3.34z" fill="#1D9BF0"/>
+          <path d="M10.54 16.2L6.8 12.46l1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.36-6.2 6.77z" fill="#ffffff"/>
+        </svg>
+      </span>
+    </a>
+    <div class="hidden md:flex items-center gap-1 text-[14px] font-medium">
+      <a href="#beranda" data-nav="beranda" data-i18n="nav_home" class="nav-link is-active">Beranda</a>
+      <a href="#tentang" data-nav="tentang" data-i18n="nav_about" class="nav-link">Tentang</a>
+      <a href="#project" data-nav="project" data-i18n="nav_projects" class="nav-link">Project</a>
+      <a href="#kontak" data-nav="kontak" data-i18n="nav_contact" class="nav-link">Kontak</a>
+    </div>
+
+    <!-- Divider pemisah navigasi dan bahasa -->
+    <div class="w-[1px] h-4 bg-black/10 mx-1 shrink-0"></div>
+
+    <!-- Language Dropdown (Ujung Kanan) -->
+    <div id="langPicker" class="relative shrink-0">
+      <button id="langBtn" type="button" aria-expanded="false" aria-haspopup="true" class="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-[13px] font-semibold tracking-wide text-ink/85 hover:text-ink hover:bg-black/5 transition-all duration-200 cursor-pointer">
+        <span id="langCurrentText">ID</span>
+        <svg id="langChevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+
+      <!-- Dropdown Popup -->
+      <div id="langMenu" class="lang-dropdown-menu">
+        <button type="button" data-lang="id" class="lang-option is-active">
+          <span>Indonesia</span>
+        </button>
+        <button type="button" data-lang="en" class="lang-option">
+          <span>English</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Hamburger -->
+    <button id="menuBtn" aria-label="Menu" class="md:hidden w-10 h-10 grid place-items-center rounded-full hover:bg-black/5">
+      <span class="burger"><i></i><i></i></span>
+    </button>
+  </nav>
+</header>
+
+<!-- Mobile overlay -->
+<div id="mobileMenu" class="fixed inset-0 z-[75] bg-white/85 backdrop-blur-3xl">
+  <div class="h-full flex flex-col justify-center px-10 gap-2">
+    <p data-i18n="nav_drawer_title" class="font-mono text-[11px] uppercase tracking-[0.25em] text-muted mb-4 mask-item">Navigasi</p>
+    <a href="#beranda" data-i18n="nav_home" class="mobile-link mask-item">Beranda</a>
+    <a href="#tentang" data-i18n="nav_about" class="mobile-link mask-item">Tentang</a>
+    <a href="#project" data-i18n="nav_projects" class="mobile-link mask-item">Project</a>
+    <a href="#kontak" data-i18n="nav_contact" class="mobile-link mask-item">Kontak</a>
+    <div class="mask-item mt-8 flex gap-3">
+      <a href="#" class="soc">IG</a><a href="#" class="soc">GH</a><a href="#" class="soc">LI</a>
+    </div>
+  </div>
+</div>
+
+<main>
+<!-- ============ HERO ============ -->
+<section id="beranda" class="min-h-[100dvh] flex items-center pt-32 pb-16 px-4">
+  <div class="max-w-3xl mx-auto w-full">
+
+    <div class="text-center">
+      <h1 class="reveal mt-6 text-[clamp(2.8rem,7vw,4.8rem)] leading-[1.02] tracking-[-0.03em] font-semibold" style="transition-delay:80ms">
+        <span data-i18n-html="hero_greeting">Halo, saya Closof</span><br>
+        <span class="font-serif italic font-normal text-[clamp(1.9rem,5vw,3rem)] inline-block min-h-[1.25em]">
+          <span id="heroTyping" class="typing-text"></span><span class="typing-cursor" aria-hidden="true">|</span>
+        </span>
+      </h1>
+      <p data-i18n-html="hero_desc" class="reveal mt-6 text-muted text-[17px] leading-[1.7] max-w-md mx-auto" style="transition-delay:160ms">
+        Saya membangun aplikasi web <span class="text-ink font-medium">end-to-end</span> — backend solid, frontend cepat.
+      </p>
+      <div class="reveal mt-8 flex flex-wrap items-center justify-center gap-4" style="transition-delay:240ms">
+        <a href="#project" class="btn-primary group magnetic">
+          <span data-i18n="hero_btn_projects">Lihat Project</span>
+          <span class="btn-icon-dark">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </span>
+        </a>
+        <a href="#kontak" data-i18n="hero_btn_contact" class="link-underline font-medium text-[15px]">Hubungi saya →</a>
+      </div>
+    </div>
+
+    <!-- Foto hero disembunyikan sementara — hapus komentar untuk menampilkan lagi
+    <div class="reveal mx-auto w-full max-w-[420px]" style="transition-delay:200ms">
+      <div class="bezel">
+        <div class="bezel-core overflow-hidden relative">
+          <img src="https://picsum.photos/seed/arkaportrait/800/1000" alt="Portrait Arka Pradipta" class="w-full h-[480px] object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between bg-white/85 backdrop-blur-xl rounded-2xl px-4 py-3">
+            <div>
+              <p class="text-[13px] font-semibold leading-tight">Arka Pradipta</p>
+              <p class="font-mono text-[11px] text-muted">Jakarta — 6.21°S, 106.84°E</p>
+            </div>
+            <span class="w-9 h-9 rounded-full bg-ink text-white grid place-items-center">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4 flex items-center justify-between px-1">
+        <p class="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">— <span class="text-ink">Web Designer</span></p>
+        <div class="flex gap-2">
+          <span class="tag tag-green">Open</span>
+          <span class="tag tag-blue">Remote</span>
+        </div>
+      </div>
+    </div>
+    -->
+
+  </div>
+</section>
+
+<!-- ============ TENTANG ============ -->
+<section id="tentang" class="py-24 md:py-32 px-4">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-10 mt-6">
+      <h2 data-i18n="about_title" class="reveal text-[clamp(1.9rem,4vw,2.9rem)] leading-[1.12] tracking-[-0.02em] font-semibold">
+        Tentang saya
+      </h2>
+      <div class="reveal" style="transition-delay:120ms">
+        <p data-i18n-html="about_desc_1" class="text-muted leading-[1.75] text-[16px]">Saya Closof — Software &amp; Fullstack Developer dengan 3 tahun pengalaman membangun aplikasi web, mobile, dan desktop: dari database, API, hingga antarmuka.</p>
+        <p data-i18n-html="about_desc_2" class="text-muted leading-[1.75] text-[16px] mt-4">Fokus saya: aplikasi yang cepat, aman, dan mudah dirawat. Tanpa kompleksitas yang tidak perlu.</p>
+      </div>
+    </div>
+
+    <!-- Tech stack -->
+    <div class="mt-14">
+      <p data-i18n="about_tech_title" class="reveal font-mono text-[11px] uppercase tracking-[0.2em] text-muted">Tech Stack</p>
+      <div class="stack-marquee mt-5">
+        <div class="stack-track">
+        <div class="reveal stack-tile" title="HTML5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" loading="lazy" /><span>HTML5</span></div>
+        <div class="reveal stack-tile" title="CSS3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" loading="lazy" /><span>CSS3</span></div>
+        <div class="reveal stack-tile" title="JavaScript"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" loading="lazy" /><span>JS</span></div>
+        <div class="reveal stack-tile" title="TypeScript"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" loading="lazy" /><span>TS</span></div>
+        <div class="reveal stack-tile" title="Tailwind CSS"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" loading="lazy" /><span>Tailwind</span></div>
+        <div class="reveal stack-tile" title="React"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" loading="lazy" /><span>React</span></div>
+        <div class="reveal stack-tile" title="Next.js"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" loading="lazy" /><span>Next.js</span></div>
+        <div class="reveal stack-tile" title="Node.js"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" loading="lazy" /><span>Node.js</span></div>
+        <div class="reveal stack-tile" title="Express"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express" loading="lazy" /><span>Express</span></div>
+        <div class="reveal stack-tile" title="PHP"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" loading="lazy" /><span>PHP</span></div>
+        <div class="reveal stack-tile" title="MySQL"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" loading="lazy" /><span>MySQL</span></div>
+        <div class="reveal stack-tile" title="PostgreSQL"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" loading="lazy" /><span>Postgres</span></div>
+        <div class="reveal stack-tile" title="MongoDB"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" loading="lazy" /><span>MongoDB</span></div>
+        <div class="reveal stack-tile" title="Git"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" loading="lazy" /><span>Git</span></div>
+        <div class="reveal stack-tile" title="Docker"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" loading="lazy" /><span>Docker</span></div>
+        <div class="reveal stack-tile" title="Figma"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" loading="lazy" /><span>Figma</span></div>
+        <div class="reveal stack-tile" title="C#"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" loading="lazy" /><span>C#</span></div>
+        <div class="reveal stack-tile" title=".NET"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" alt=".NET" loading="lazy" /><span>.NET</span></div>
+        <div class="reveal stack-tile" title="Android"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" alt="Android" loading="lazy" /><span>Android</span></div>
+        <div class="reveal stack-tile" title="Android Studio"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" alt="Android Studio" loading="lazy" /><span>A. Studio</span></div>
+        <div class="reveal stack-tile" title="Kotlin"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" alt="Kotlin" loading="lazy" /><span>Kotlin</span></div>
+        <div class="reveal stack-tile" title="Java"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" loading="lazy" /><span>Java</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECT ============ -->
+<section id="project" class="py-24 md:py-32 px-4 bg-white border-y border-line relative overflow-hidden">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center max-w-xl mx-auto">
+      <h2 data-i18n="projects_title" class="reveal text-[clamp(2rem,4.5vw,3rem)] tracking-[-0.02em] font-semibold leading-tight">Project</h2>
+      <p class="reveal text-muted mt-3 text-[16px]">
+        <span data-i18n="projects_subtitle">Berikut beberapa project yang pernah dikembangkan.</span>
+        <a href="https://closofproj.my.id" class="text-ink font-medium underline underline-offset-4 hover:opacity-75 transition-opacity ml-1">
+          <span data-i18n="projects_link_page">Buka halaman project</span>
+        </a>
+      </p>
+    </div>
+
+    <!-- Filter Kategori Proyek -->
+    <div id="projectFilters" class="reveal mt-8 flex flex-wrap items-center justify-center gap-2">
+      <button type="button" class="filter-tab is-active" data-filter="all">
+        <span data-i18n="filter_all">Semua</span>
+        <span class="filter-count">32</span>
+      </button>
+      <button type="button" class="filter-tab" data-filter="web">
+        <span data-i18n="filter_web">Web</span>
+        <span class="filter-count">17</span>
+      </button>
+      <button type="button" class="filter-tab" data-filter="mobile">
+        <span data-i18n="filter_mobile">Mobile</span>
+        <span class="filter-count">3</span>
+      </button>
+      <button type="button" class="filter-tab" data-filter="desktop">
+        <span data-i18n="filter_desktop">Desktop &amp; Sistem</span>
+        <span class="filter-count">5</span>
+      </button>
+      <button type="button" class="filter-tab" data-filter="ai">
+        <span data-i18n="filter_ai">AI &amp; LLM</span>
+        <span class="filter-count">7</span>
+      </button>
+    </div>
+
+    <div id="projectGrid" class="grid md:grid-cols-2 gap-8 md:gap-10 mt-8"></div>
+
+    <!-- Extra Projects (Expandable) -->
+    <div id="projectExtraWrap" class="project-expand-wrap">
+      <div class="project-expand-inner">
+        <div id="projectGridExtra" class="grid md:grid-cols-2 gap-8 md:gap-10 pt-8 md:pt-10"></div>
+      </div>
+    </div>
+
+    <!-- Tombol Expand / Collapse Project -->
+    <div id="projectToggleWrap" class="text-center">
+      <button id="projectToggleBtn" type="button" aria-expanded="false" class="btn-project-toggle">
+        <span id="projectToggleText" data-i18n="projects_toggle_more">Lainnya</span>
+      </button>
+    </div>
+
+    <div class="mt-14">
+      <p data-i18n="projects_tech_title" class="reveal font-mono text-[11px] uppercase tracking-[0.2em] text-muted">Tech yang dipakai di project ini</p>
+      <div id="projectTechStack" class="mt-5 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KONTAK ============ -->
+<section id="kontak" class="py-24 md:py-32 px-4">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 data-i18n="contact_title" class="reveal text-[clamp(2rem,4.5vw,3rem)] tracking-[-0.02em] font-semibold leading-tight">Contact</h2>
+    <p data-i18n="contact_subtitle" class="reveal mt-3 text-muted max-w-lg mx-auto leading-relaxed">Sampaikan kebutuhan Anda melalui salah satu pilihan saluran di bawah ini.</p>
+
+    <div class="reveal mt-6 flex items-center justify-center gap-3">
+      <a href="#" aria-label="GitHub" title="GitHub" class="contact-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      <a href="mailto:closofdev@gmail.com" aria-label="Email" title="Email" class="contact-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+      </a>
+      <a href="#" aria-label="Instagram" title="Instagram" class="contact-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+      </a>
+    </div>
+
+    <p class="reveal mt-5 text-[18px] font-medium">
+      <a href="mailto:closofdev@gmail.com" class="underline underline-offset-4">closofdev@gmail.com</a>
+    </p>
+  </div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer class="border-t border-line bg-white/70 px-4 py-8">
+  <div class="max-w-5xl mx-auto text-center">
+    <p data-i18n-html="footer_text" class="text-[14px] text-muted">© 2026 <span class="inline-flex items-center gap-1 text-ink font-medium"><span>Closof Developer</span><svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" aria-label="Verified" title="Verified"><path d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81c-.67-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.33 2.19c-1.4-.46-2.91-.2-3.92.81s-1.26 2.52-.8 3.91c-1.31.67-2.2 1.91-2.2 3.34s.89 2.67 2.2 3.34c-.46 1.4-.2 2.91.8 3.91s2.52 1.26 3.91.81c.67 1.31 1.93 2.19 3.34 2.19s2.67-.88 3.34-2.19c1.39.45 2.9.2 3.91-.81s1.27-2.51.81-3.91c1.31-.67 2.19-1.91 2.19-3.34z" fill="#1D9BF0"/><path d="M10.54 16.2L6.8 12.46l1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.36-6.2 6.77z" fill="#ffffff"/></svg></span> — Fullstack &amp; Software Developer</p>
+  </div>
+</footer>
+
+<!-- Tombol kembali ke atas (floating kanan bawah) -->
+<button id="toTop" aria-label="Kembali ke atas" class="to-top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<script src="script.js?v=38"></script>
+</body>
+</html>

@@ -1,0 +1,692 @@
+/* ===== Base (tanpa animasi) ===== */
+html{ scroll-behavior:auto; }
+section[id]{ scroll-margin-top:100px; }
+body{ text-rendering:optimizeLegibility; }
+::selection{ background:#111; color:#fff; }
+::-webkit-scrollbar{ width:10px; }
+::-webkit-scrollbar-track{ background:#FBFBFA; }
+::-webkit-scrollbar-thumb{ background:#d9d9d6; border-radius:99px; border:2px solid #FBFBFA; }
+
+/* Grain statis */
+.grain{
+  position:fixed; inset:0; z-index:60; pointer-events:none; opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+main, footer{ position:relative; z-index:1; }
+
+/* Nav links — transisi pill halus */
+.nav-link{
+  padding:8px 16px; border-radius:999px; color:#555;
+  transition:background-color .45s ease, color .45s ease, padding .35s ease, transform .35s ease;
+  white-space: nowrap;
+}
+.nav-link:hover{ background:rgba(0,0,0,.05); color:#111; }
+.nav-link.is-active{ background:#111; color:#fff; }
+
+/* Language Dropdown (Paling Kiri Navbar) */
+#langPicker {
+  position: relative;
+}
+#langBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #111;
+  background: transparent;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color 0.2s ease;
+}
+#langBtn:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+#langBtn[aria-expanded="true"] {
+  background: rgba(0, 0, 0, 0.08);
+}
+#langBtn[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+#langBtn svg {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lang-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  left: auto;
+  min-width: 120px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  padding: 5px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px) scale(0.95);
+  transform-origin: top right;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.25s;
+  z-index: 120;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.lang-dropdown-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+.lang-option {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 8px 14px;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  text-align: left;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+.lang-option:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #111;
+}
+.lang-option.is-active {
+  background: #111;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Island button */
+.btn-island{
+  display:inline-flex; align-items:center; gap:10px;
+  background:#111; color:#fff; font-size:14px; font-weight:600;
+  padding:6px 6px 6px 18px; border-radius:999px;
+}
+.btn-island:hover{ background:#333; }
+.btn-icon{
+  width:32px; height:32px; border-radius:99px; display:grid; place-items:center;
+  background:rgba(255,255,255,.12);
+}
+
+/* Primary button (button-in-button) */
+.btn-primary{
+  display:inline-flex; align-items:center; gap:12px;
+  background:#111; color:#fff; font-weight:600; font-size:15px;
+  padding:8px 8px 8px 26px; border-radius:999px;
+}
+.btn-primary:hover{ background:#2b2b2b; }
+.btn-icon-dark{
+  width:38px; height:38px; border-radius:99px; display:grid; place-items:center;
+  background:rgba(255,255,255,.14);
+}
+
+.link-underline:hover{ text-decoration:underline; text-underline-offset:4px; }
+
+/* Double-bezel */
+.bezel{
+  background:rgba(0,0,0,.04); border:1px solid rgba(0,0,0,.06);
+  padding:8px; border-radius:2rem;
+}
+.bezel-core{
+  background:#fff; border-radius:calc(2rem - 0.5rem); overflow:hidden;
+}
+
+/* Tags */
+.tag{
+  font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+  padding:5px 12px; border-radius:999px;
+}
+.tag-green{ background:#EDF3EC; color:#346538; }
+.tag-blue{ background:#E1F3FE; color:#1F6C9F; }
+.tag-yellow{ background:#FBF3DB; color:#956400; }
+.tag-red{ background:#FDEBEC; color:#9F2F2D; }
+
+/* Stats */
+.stat-num{ font-size:26px; font-weight:700; letter-spacing:-.02em; }
+.stat-label{ font-size:12px; color:#787774; font-family:"Ubuntu Mono",monospace; text-transform:uppercase; letter-spacing:.08em; }
+
+/* Reveal dinonaktifkan — semua konten langsung tampil */
+.reveal{ opacity:1; }
+
+/* Tech stack tiles */
+.stack-tile{
+  background:#fff; border:1px solid #EAEAEA; border-radius:10px;
+  padding:12px 2px 10px; display:flex; flex-direction:column; align-items:center; gap:6px;
+  cursor: pointer;
+  transition: border-color 0.25s ease, box-shadow 0.28s ease, transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+.stack-tile:hover{
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+.stack-tile img{
+  width:26px; height:26px; object-fit:contain; display:block;
+  transform: scale(1) translateZ(0);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+.stack-tile:hover img{
+  transform: scale(1.14) translateY(-2px) translateZ(0);
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.08));
+}
+.stack-tile:active img{
+  transform: scale(1.04) translateY(0);
+}
+.stack-tile span{
+  font-family:"Ubuntu Mono",monospace; font-size:10px; letter-spacing:.04em; color:#787774; text-transform:uppercase;
+  transition: color 0.25s ease;
+}
+.stack-tile:hover span{
+  color: #111;
+}
+
+/* Khusus Tech Stack di Project Section (Hanya icon yang membesar, card dan teks tetap diam) */
+#projectTechStack .stack-tile {
+  transition: none;
+  cursor: default;
+}
+#projectTechStack .stack-tile:hover {
+  border-color: #EAEAEA;
+  box-shadow: none;
+  transform: none;
+}
+#projectTechStack .stack-tile span {
+  transition: none;
+}
+#projectTechStack .stack-tile:hover span {
+  color: #787774;
+}
+#projectTechStack .stack-tile img {
+  cursor: pointer;
+  transform: scale(1) translateZ(0);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+#projectTechStack .stack-tile:hover img,
+#projectTechStack .stack-tile img:hover {
+  transform: scale(1.18) translateZ(0);
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
+}
+#projectTechStack .stack-tile:active img {
+  transform: scale(1.06) translateZ(0);
+}
+
+/* Tech stack marquee — 1 baris auto-slide ke kiri, loop mulus */
+.stack-marquee{
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image:linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+.stack-track{ display:flex; gap:12px; width:max-content; }
+.stack-track .stack-tile{ flex:0 0 auto; width:7rem; }
+.stack-track.animate{ animation:stack-slide 45s linear infinite; }
+.stack-marquee:hover .stack-track.animate{ animation-play-state:paused; }
+@keyframes stack-slide{ to{ transform:translateX(calc(-50% - 6px)); } }
+
+/* Project memakai utility Tailwind langsung di HTML */
+
+/* Expand / Collapse Project dengan efek Peek, Transparan & Blur */
+.project-expand-wrap {
+  position: relative;
+  overflow: hidden;
+  max-height: 120px;
+  opacity: 0.35;
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
+  will-change: max-height, opacity, filter;
+  transition: max-height 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-expand-wrap.is-expanded {
+  opacity: 1;
+  filter: blur(0);
+  -webkit-filter: blur(0);
+  pointer-events: auto;
+  user-select: auto;
+}
+
+.project-expand-inner {
+  min-height: 0;
+}
+
+/* Container Tombol Toggle: Menimpa / Overlay di atas kartu transparan */
+#projectToggleWrap {
+  position: relative;
+  z-index: 20;
+  margin-top: -52px;
+  text-align: center;
+  transition: margin-top 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Saat terbuka (expanded), tombol Tutup berada di bawah kartu dengan jarak normal */
+.project-expand-wrap.is-expanded + #projectToggleWrap,
+#projectToggleWrap.is-expanded {
+  margin-top: 2.5rem;
+}
+
+/* Tombol Toggle Project: "Lainnya" & "Tutup" (tanpa icon/arrow) */
+.btn-project-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  padding: 10px 38px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.btn-project-toggle:hover {
+  background: #2b2b2b;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.btn-project-toggle:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Animasi Zoom Halus pada Gambar Project */
+.project-img-wrap {
+  position: relative;
+  overflow: hidden;
+  border: none !important;
+  will-change: height;
+  contain: paint;
+}
+.project-img {
+  transform: scale(1) translateZ(0);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s ease;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+.project-img-wrap:hover .project-img,
+.project-card:hover .project-img {
+  transform: scale(1.045) translateZ(0);
+}
+
+/* Ikon tech polos di bawah deskripsi project */
+.proj-icons { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
+.proj-icons img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: block;
+  cursor: pointer;
+  transform: scale(1) translateZ(0);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), filter 0.28s ease;
+  will-change: transform;
+}
+.proj-icons img:hover {
+  transform: scale(1.14) translateY(-1.5px) translateZ(0);
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
+}
+.proj-icons img:active {
+  transform: scale(1.05) translateY(0);
+}
+
+/* Form */
+.field{ display:block; }
+.field span{ display:block; font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#787774; margin-bottom:6px; font-family:"Ubuntu Mono",monospace; }
+.field input, .field textarea{
+  width:100%; background:#FBFBFA; border:1px solid #EAEAEA; border-radius:10px;
+  padding:12px 14px; font-size:15px; outline:none; resize:vertical;
+}
+.field input:focus, .field textarea:focus{ border-color:#111; background:#fff; }
+
+/* Ikon kontak (GitHub / Email / Instagram) */
+.contact-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #EAEAEA;
+  background: #fff;
+  color: #111;
+  transform: scale(1) translateZ(0);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s ease,
+              color 0.25s ease,
+              border-color 0.25s ease,
+              box-shadow 0.3s ease;
+  will-change: transform;
+}
+.contact-icon:hover {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+  transform: scale(1.12) translateY(-2px) translateZ(0);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+.contact-icon:active {
+  transform: scale(0.97) translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.contact-icon svg { width: 20px; height: 20px; display: block; }
+
+/* Social */
+.soc{
+  width:36px; height:36px; border-radius:99px; display:grid; place-items:center;
+  border:1px solid #EAEAEA; font-size:11px; font-weight:700; font-family:"Ubuntu Mono",monospace;
+  color:#555;
+}
+.soc:hover{ background:#111; color:#fff; border-color:#111; }
+
+/* Burger */
+.burger{ display:grid; gap:5px; width:18px; }
+.burger i{ display:block; height:2px; background:#111; border-radius:99px; }
+#menuBtn.open .burger i:first-child{ transform:translateY(3.5px) rotate(45deg); }
+#menuBtn.open .burger i:last-child{ transform:translateY(-3.5px) rotate(-45deg); }
+
+/* Mobile menu (tampil/sembunyi langsung) */
+#mobileMenu{ opacity:0; pointer-events:none; }
+#mobileMenu.show{ opacity:1; pointer-events:auto; }
+.mobile-link{
+  font-size:clamp(2rem,9vw,3rem); font-weight:600; letter-spacing:-.03em; line-height:1.15;
+}
+.mobile-link:hover{ color:#787774; }
+
+/* Tombol kembali ke atas (floating kanan bawah) */
+.to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 70;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #111;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(16px) scale(0.9);
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s ease,
+              color 0.25s ease,
+              border-color 0.25s ease,
+              box-shadow 0.25s ease;
+}
+.to-top.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+.to-top:hover {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+.to-top:active {
+  transform: translateY(0) scale(0.96);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar auto-hide — transisi smooth */
+#siteHeader{ transition:transform .6s cubic-bezier(0.32,0.72,0,1), opacity .6s cubic-bezier(0.32,0.72,0,1); }
+#siteHeader.nav-hidden{ transform:translateY(-130%); opacity:0; pointer-events:none; }
+
+/* Typewriter Cursor & Animation */
+.typing-text {
+  display: inline;
+}
+.typing-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  font-style: normal;
+  font-weight: 300;
+  color: #111;
+  animation: blink-cursor 0.9s infinite;
+  user-select: none;
+}
+@keyframes blink-cursor {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* ===== Fluid Size & Dimension Morphing saat Pergantian Bahasa (Solid 100%, Tanpa Efek Transparan) ===== */
+#islandNav {
+  will-change: width;
+  transition: width 0.42s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.btn-primary, .btn-project-toggle {
+  transition: background-color 0.25s ease, transform 0.25s ease, width 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.35s ease, box-shadow 0.25s ease;
+  white-space: nowrap;
+}
+
+.project-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ===== Project Category Filter Tabs ===== */
+.filter-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px 6px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fbfbfa;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.filter-tab:hover {
+  color: #111;
+  border-color: rgba(0, 0, 0, 0.2);
+  background: #f4f4f4;
+  transform: translateY(-1px);
+}
+
+.filter-tab.is-active {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
+  transform: translateY(0);
+}
+
+.filter-tab:active {
+  transform: scale(0.96);
+}
+
+.filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 18px;
+  padding: 0 5px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: "Ubuntu Mono", monospace;
+  line-height: 1;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.06);
+  color: #71717a;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.filter-tab:hover .filter-count {
+  background: rgba(0, 0, 0, 0.1);
+  color: #111;
+}
+
+.filter-tab.is-active .filter-count {
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+}
+
+/* Transisi Smooth Pergantian Tab Filter */
+#projectGrid, #projectGridExtra {
+  transition: opacity 0.16s cubic-bezier(0.4, 0, 1, 1), transform 0.16s cubic-bezier(0.4, 0, 1, 1);
+  will-change: opacity, transform;
+}
+
+#projectGrid.grid-filter-leave, #projectGridExtra.grid-filter-leave {
+  opacity: 0;
+  transform: translateY(8px) scale(0.99);
+}
+
+/* Animasi Muncul Card yang Halus & Staggered */
+@keyframes projectCardIn {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.965);
+  }
+  65% {
+    opacity: 0.95;
+    transform: translateY(-2px) scale(1.006);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.project-card.filter-enter {
+  animation: projectCardIn 0.44s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+/* Tombol Link ke Halaman Mandiri Project */
+.btn-project-page {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: 999px;
+  background: #f4f4f3;
+  color: #111;
+  font-size: 13.5px;
+  font-weight: 500;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-project-page:hover {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+.btn-project-page svg {
+  transition: transform 0.25s ease;
+}
+.btn-project-page:hover svg {
+  transform: translate(2px, -2px);
+}
+.btn-project-page:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* ===== Thumbnail Card Foto Kecil (Khusus Halaman project.html) ===== */
+.project-thumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  margin-bottom: 2px;
+}
+
+.project-thumb-btn {
+  width: 58px;
+  height: 36px;
+  padding: 0 !important;
+  border: none !important;
+  outline: none !important;
+  background: transparent;
+  border-radius: 6px;
+  box-shadow: none !important;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.45;
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.project-thumb-btn:hover {
+  opacity: 0.8;
+  transform: translateY(-1px);
+}
+
+.project-thumb-btn:focus,
+.project-thumb-btn:focus-visible {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.project-thumb-btn.is-active {
+  opacity: 1;
+  transform: translateY(-1px);
+  box-shadow: none !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.project-thumb-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 6px;
+  border: none !important;
+  outline: none !important;
+  pointer-events: none;
+}
+
+
+
+
+
+
