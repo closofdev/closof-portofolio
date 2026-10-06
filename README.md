@@ -8,22 +8,6 @@ Website portofolio satu halaman untuk menampilkan project web, mobile, desktop, 
 
 ---
 
-## Preview
-
-| Beranda | Tentang |
-| --- | --- |
-| ![Hero section](media/preview/hero.png) | ![About section](media/preview/about.png) |
-
-| Project | Kontak |
-| --- | --- |
-| ![Project section](media/preview/projects.png) | ![Contact section](media/preview/contact.png) |
-
-| Tampilan mobile | Halaman penuh |
-| --- | --- |
-| ![Mobile view](media/preview/mobile.png) | ![Full page](media/preview/full-page.png) |
-
----
-
 ## Fitur
 
 Semua fitur di bawah ini benar-benar ada di dalam kode, bukan sekadar daftar.
