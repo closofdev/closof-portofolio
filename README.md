@@ -1,6 +1,6 @@
 ﻿# Closof — Portfolio Websites
 
-Website portofolio satu halaman untuk menampilkan project web, mobile, desktop, dan AI. Dibuat tanpa framework dan tanpa proses build: satu file HTML, satu stylesheet, satu script.
+Website portofolio satu halaman untuk menampilkan project web, mobile, desktop, dan AI. Dibuat tanpa framework dan tanpa proses build: satu file HTML, satu stylesheet, satu script..
 
 **Live:** https://www.closof.site
 
