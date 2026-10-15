@@ -80,20 +80,6 @@ Jumlah kartu, isi filter, dan daftar tech di bagian bawah halaman ikut ter-updat
 - Google Fonts (Ubuntu, Ubuntu Mono)
 - Devicon untuk ikon teknologi
 
-## Video
-
-Animasi di atas ditampilkan sebagai GIF karena README GitHub tidak merender tag `<video>`. Rekaman layar kualitas penuh (1280×800, 30fps, 8 detik) tersedia sebagai file di repo:
-
-- [`media/preview/preview.mp4`](media/preview/preview.mp4) — H.264, kompatibel luas (3.3 MB)
-- [`media/preview/preview.webm`](media/preview/preview.webm) — VP9, ukuran lebih kecil (2.5 MB)
-
-Cara menonton:
-
-```bash
-# buka langsung, atau
-start media/preview/preview.mp4     # Windows
-open media/preview/preview.mp4      # macOS
-```
 
 > Video ini direkam dari halaman live https://www.closof.site, jadi menampilkan perilaku asli (termasuk animasi mengetik di hero).
 
