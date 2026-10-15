@@ -1,4 +1,4 @@
-﻿# Closof — Portfolio Websites
+﻿# Closof — Portfolio Website
 
 Website portofolio satu halaman untuk menampilkan project web, mobile, desktop, dan AI. Dibuat tanpa framework dan tanpa proses build: satu file HTML, satu stylesheet, satu script..
 
